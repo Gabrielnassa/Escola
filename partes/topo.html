@@ -1,0 +1,78 @@
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <!-- Cata-vento provisório, redesenhado a partir do logo. Trocar pelo vetor oficial quando houver. -->
+  <symbol id="catavento" viewBox="-50 -50 100 100">
+    <defs>
+      <g id="catavento-pa">
+        <ellipse cx="-5" cy="-33" rx="9.5" ry="7" transform="rotate(-20 -5 -33)"/>
+        <rect x="2.2" y="-34" width="3.6" height="31" rx="1.2"/>
+        <path d="M5.8-3.5C6.5-12 16-14.5 19.5-25 23.5-15 16.5-8.5 5.8-9.5Z"/>
+      </g>
+    </defs>
+    <use href="#catavento-pa" style="fill:var(--azul)" transform="rotate(0)"/>
+    <use href="#catavento-pa" style="fill:var(--verde)" transform="rotate(90)"/>
+    <use href="#catavento-pa" style="fill:var(--magenta)" transform="rotate(180)"/>
+    <use href="#catavento-pa" style="fill:var(--coral)" transform="rotate(270)"/>
+  </symbol>
+</svg>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<aside class="barra-topo" aria-label="Endereço e WhatsApp">
+  <div class="envelope">
+    <span>Ipiranga · R. Bom Pastor, 1077</span>
+    <a href="https://wa.me/5511940793838?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Bambu%20e%20queria%20conversar%20sobre%20as%20aulas."><span class="barra-topo__rotulo">WhatsApp </span>(11) 94079-3838</a>
+  </div>
+</aside>
+
+<header class="cabecalho">
+  <div class="envelope">
+    <a class="logo" href="index.html" aria-label="Bambu Escola de Música e Arte, página inicial">
+      <svg class="catavento logo__catavento" aria-hidden="true" focusable="false"><use href="#catavento"/></svg>
+      <span class="logo__nome" aria-hidden="true">
+        <span class="logo__bambu">BAMBU</span>
+        <span class="logo__sub">Música &amp; Arte</span>
+      </span>
+    </a>
+
+    <nav class="nav-principal" aria-label="Principal">
+      <ul>
+        <li><a href="cursos.html" data-nav="cursos">Cursos</a></li>
+        <li><a href="quem-somos.html" data-nav="quem-somos">Quem somos</a></li>
+        <li><a href="{{inicio}}#depoimentos">Depoimentos</a></li>
+        <li><a href="blog.html" data-nav="blog">Blog</a></li>
+        <li><a href="{{inicio}}#contato">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="cabecalho__acoes">
+      <a class="botao botao--pequeno cabecalho__wa" href="https://wa.me/5511940793838?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Bambu%20e%20queria%20conversar%20sobre%20as%20aulas.">Falar no WhatsApp</a>
+      <button class="botao-menu" type="button" aria-expanded="false" aria-controls="menu-tela">Menu</button>
+    </div>
+  </div>
+</header>
+
+<div class="menu-tela" id="menu-tela" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="envelope menu-tela__topo">
+    <a class="logo" href="index.html" aria-label="Bambu Escola de Música e Arte, página inicial">
+      <svg class="catavento logo__catavento" aria-hidden="true" focusable="false"><use href="#catavento"/></svg>
+      <span class="logo__nome" aria-hidden="true">
+        <span class="logo__bambu">BAMBU</span>
+        <span class="logo__sub">Música &amp; Arte</span>
+      </span>
+    </a>
+    <button class="botao-menu" type="button" data-fechar-menu>Fechar</button>
+  </div>
+  <nav class="envelope" aria-label="Menu do celular">
+    <ul>
+      <li><a href="cursos.html" data-nav="cursos">Cursos</a></li>
+      <li><a href="quem-somos.html" data-nav="quem-somos">Quem somos</a></li>
+      <li><a href="{{inicio}}#depoimentos">Depoimentos</a></li>
+      <li><a href="blog.html" data-nav="blog">Blog</a></li>
+      <li><a href="{{inicio}}#contato">Contato</a></li>
+    </ul>
+  </nav>
+  <div class="envelope menu-tela__rodape">
+    <span class="pauta" aria-hidden="true"></span>
+    <a class="botao" href="https://wa.me/5511940793838?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Bambu%20e%20queria%20conversar%20sobre%20as%20aulas.">Falar no WhatsApp</a>
+    <p>R. Bom Pastor, 1077 · Ipiranga, São Paulo<br>(11) 94079-3838 · (11) 94006-1498</p>
+  </div>
+</div>

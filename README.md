@@ -1,82 +1,71 @@
-# Bambu Música e Arte — novo site
+# Bambu Escola de Música e Arte: site
 
-Novo site da **Bambu Música e Arte**. A estrutura segue o layout institucional de escola do [Colégio Rosário](https://rosarionet.com.br/), com o conteúdo, os contatos e a identidade da Bambu.
+Site novo da Bambu (bambumusicaearte.com.br), feito do zero em **HTML, CSS e JS puros**, sem framework e sem biblioteca de componentes. Direção visual "caderno de pauta": papel de partitura e casa de bairro, com as cores do logo.
 
-| O quê | Onde |
+Para ver, abra `index.html` no navegador. Para publicar, basta subir a pasta inteira (menos `partes/` e `ferramentas/`, que são só de manutenção) em qualquer hospedagem de arquivos estáticos.
+
+## Páginas
+
+| Arquivo | O que é |
 |---|---|
-| **Prévia completa em HTML** (abra no navegador para ver e apresentar) | `preview/index.html` |
-| **Tema WordPress pronto para instalar** (.zip) | `dist/bambu-musica-e-arte.zip` |
-| Código-fonte do tema | `wordpress/bambu-musica-e-arte/` |
-| Scripts que geram a prévia e o .zip | `tools/` |
+| `index.html` | Página inicial: hero, faixa de fatos, cursos como programa de recital, escola ou domicílio, inclusão, por que "Bambu", depoimentos, quem está por trás, blog, contato |
+| `cursos.html` | Uma seção por curso: para quem é, como funciona, onde acontece, faixa etária, duração |
+| `quem-somos.html` | Proposta, o nome, missão e visão, inclusão, equipe, foto da casa |
+| `trabalhe-conosco.html` | Texto curto e formulário com upload de currículo em PDF |
+| `blog.html` e `artigo-exemplo.html` | Listagem e modelo de leitura de um post (conteúdo de exemplo, marcado) |
+| `404.html` | Página de erro |
 
-## Estrutura da página inicial
+## Onde mexer
 
-1. **Barra superior** (verde-escura): telefone, e-mail, endereço, redes sociais e o botão "Trabalhe conosco".
-2. **Cabeçalho fixo**: logo, menu com submenu de cursos e o botão de destaque "Aula experimental".
-3. **Banner rotativo** com 3 slides (troca sozinho, tem setas, bolinhas e aceita arrastar no celular).
-4. **Acesso rápido** sobre o banner: aulas na escola, em domicílio, online e em grupo.
-5. **Quem somos**: foto, texto, o símbolo do bambu e 3 destaques.
-6. **Cursos**, no lugar das "etapas de formação": 9 cards.
-7. **Valores**, faixa verde com o que o bambu ensina: flexibilidade, resiliência, crescimento constante e respeito ao tempo.
-8. **Inclusão, musicoterapia e psicopedagogia.**
-9. **Para escolas e profissionais**: consultoria e formação.
-10. **Depoimentos.**
-11. **Blog / novidades**: os 3 últimos posts.
-12. **Faixa de chamada** para a aula experimental.
-13. **Contato**: dados, formulário de agendamento e mapa do Google.
-14. **Rodapé** em 4 colunas, mais o **botão flutuante do WhatsApp**.
+- **Cores, fontes e medidas**: variáveis no começo de `assets/css/site.css`. A cor de cada curso também está lá (`--c-individuais`, `--c-grupo`…).
+- **Topo e rodapé**: ficam em `partes/topo.html` e `partes/rodape.html`. Depois de editar, rode:
 
-O site funciona no computador, no tablet e no celular, onde o menu vira uma gaveta lateral.
+  ```bash
+  node ferramentas/montar.mjs
+  ```
 
-## Como instalar no WordPress
+  O script copia as partes para dentro de todas as páginas (entre os comentários `<!-- parte:… -->`) e marca o item do menu da página atual. As páginas continuam sendo HTML comum: o resto delas se edita direto.
+- **Fotos**: veja `assets/fotos/LEIA-ME.md`. Cada lugar de foto tem a tag `<img>` pronta num comentário.
+- **Formulários**: o atributo `data-endpoint` dos dois `<form>` recebe o endereço que vai receber as mensagens (Formspree, Getform, um script no servidor…). O de "Trabalhe conosco" precisa aceitar arquivo. Enquanto estiver vazio, o formulário funciona em modo de demonstração: valida, mostra a confirmação e avisa na tela que nada foi enviado.
+- **WhatsApp**: todos os links usam `https://wa.me/5511940793838?text=…` com mensagem pronta. Cada curso tem a sua ("Olá! Quero saber mais sobre…").
+- **Logo e cata-vento**: o cata-vento e o "BAMBU" do cabeçalho foram redesenhados em SVG a partir da descrição do logo, porque o arquivo original não chegou. Troque pelo vetor oficial em `partes/topo.html` (símbolo `#catavento`) e em `assets/img/catavento.svg` (que também é o favicon e o marcador das listas).
 
-1. Baixe `dist/bambu-musica-e-arte.zip`.
-2. No painel do WordPress, vá em **Aparência → Temas → Adicionar novo → Enviar tema**, escolha o .zip e clique em **Instalar** e depois em **Ativar**.
-3. Vá em **Configurações → Links permanentes** e clique em **Salvar** (isso ativa o endereço `/cursos/`).
-4. Pronto: a página inicial já aparece completa, com o conteúdo padrão da Bambu.
+## Regras que o site segue
 
-> Dica: faça um backup do site atual antes de trocar o tema. Os posts e páginas que já existem (blog, Quem somos, Trabalhe conosco) continuam funcionando e passam a usar o novo visual.
+- Texto corrido sempre em azul-noite sobre o papel. As cores vivas só aparecem como fundo, forma e detalhe.
+- Sobre fundo colorido (faixa azul, bloco verde de inclusão), o texto é azul-noite. Links em tons escuros.
+- Os números grandes dos cursos levam a cor do curso com um contorno azul-noite de 1px. Pelo critério WCAG 1.4.3, uma borda estreita na letra conta como a própria letra, então eles passam em contraste mesmo no amarelo. O axe-core não enxerga o contorno e aponta esses quatro números; são decorativos (`aria-hidden`), e a ordem já está na lista.
+- Só duas animações no site inteiro: a linha magenta que risca "tempo" no título e as hastes de bambu, que crescem uma vez. As duas somem com `prefers-reduced-motion`. O cata-vento do logo gira devagar no hover.
+- Caveat aparece no máximo 3 ou 4 vezes por página.
+- Nada de dado inventado. Tudo o que falta está marcado na própria página com `[PREENCHER: …]` ou `[FOTO: …]`, em destaque amarelo.
 
-### Personalizar textos, contatos e imagens
+## Conferido
 
-Vá em **Aparência → Personalizar → Bambu Música e Arte**. Lá você troca:
+- Larguras de 360, 768, 1024, 1280 e 1600 px, sem rolagem horizontal.
+- Auditoria axe-core (WCAG 2.1 A/AA e boas práticas) em todas as páginas, em 360 e 1280 px: só sobram os quatro números decorativos explicados acima.
+- Teclado: link "Pular para o conteúdo", foco visível azul-noite de 2px, menu do celular com Esc e foco preso dentro dele.
+- Formulários: mensagens de erro ligadas aos campos, confirmação com o nome da pessoa.
 
-- **Contato e redes sociais**: telefones, WhatsApp, mensagem automática do WhatsApp, e-mail, endereço, horário, Instagram, Facebook e YouTube.
-- **Banner rotativo**: título, texto, botão, link e imagem de cada um dos 3 slides. Deixe o título vazio para esconder um slide.
-- **Quem somos**, **Inclusão e musicoterapia** e **Chamada para aula experimental**: textos, fotos e destaques.
-- **Formulário e mapa**: e-mail que recebe as mensagens, shortcode de outro formulário (Contact Form 7, WPForms…) e se o mapa aparece.
-- **Rodapé**: texto sobre a escola.
+## SEO local
 
-O **logo** se troca em **Personalizar → Identidade do site → Logo**. Enquanto nenhum logo for enviado, o tema usa um logo de bambu feito em SVG.
+- `<title>` e meta description por página; título da inicial: "Bambu | Escola de Música e Arte no Ipiranga, São Paulo".
+- JSON-LD `MusicSchool` + `LocalBusiness` na inicial, com endereço, telefones, e-mail e redes.
+- Open Graph em todas as páginas (a imagem `assets/fotos/og-fachada.jpg` ainda precisa ser criada a partir da foto real).
+- `sitemap.xml`, `robots.txt` e um único `h1` por página.
 
-### Cursos e depoimentos
+## Pendências
 
-O tema adiciona dois menus no painel:
+Estão todas visíveis nas páginas. Resumo:
 
-- **Cursos**: cada curso tem título, resumo (é o texto do card), ícone, etiqueta (ex.: "Individual") e ordem. Quando o primeiro curso é cadastrado, a lista padrão some e passam a aparecer só os cursos cadastrados. Cada curso também ganha uma página própria.
-- **Depoimentos**: o título é o nome da pessoa, o texto vai no editor e há um campo para "Curso ou relação" (ex.: "Aluna de piano"). **A seção de depoimentos só aparece no site quando houver depoimentos cadastrados.**
+**Conteúdo**
+- Os 4 depoimentos (Luciana Amorim, Leonidas, Luciana mãe da Júlia, Simone mãe do Pietro), com o contexto de cada um.
+- Nomes dos fundadores e história da escola.
+- Horário de atendimento, CNPJ, bairros atendidos a domicílio.
+- Cursos: instrumentos oferecidos, faixas etárias, duração e frequência, formato e local da musicoterapia, da consultoria e dos cursos para profissionais.
+- Equipe: nome, instrumento e formação de cada professor.
+- Blog: posts reais (os atuais são exemplos marcados).
+- Endereço que recebe os formulários (`data-endpoint`).
 
-A seção **Blog** mostra os 3 posts mais recentes e só aparece se houver posts publicados.
-
-### Menu
-
-Até que um menu seja criado, o tema mostra um menu padrão: Início, Quem somos, Cursos, Musicoterapia, Para escolas, Blog e Contato. Para usar o seu, vá em **Aparência → Menus**, crie o menu e marque **Menu principal**. Para os itens que rolam a página inicial, use links personalizados como `/#cursos`, `/#inclusao`, `/#escolas` e `/#contato`.
-
-## Antes de publicar: confira
-
-- **Fotos**: a prévia usa fotos de banco de imagens (Unsplash) só como exemplo. Troque pelas fotos reais da escola no Personalizar; as do Instagram funcionam bem. Se uma imagem não carregar, aparece um fundo verde no lugar.
-- **Lista de instrumentos**: o site atual fala em "aulas de instrumento ou canto". Os cards de Piano, Violão, Canto e Bateria são uma sugestão; ajuste conforme os cursos oferecidos de verdade.
-- **Depoimentos da prévia**: são textos ilustrativos, inspirados no depoimento que já existe no site atual. No WordPress eles não aparecem: cadastre depoimentos reais.
-- **Posts da prévia**: também são exemplos. No WordPress aparecem os posts reais do blog.
-- **Horário de atendimento**: está "Segunda a sábado · horários sob consulta". Coloque o horário correto.
-- **Cores**: o tema usa uma paleta verde-bambu com destaque amarelo. Para ajustar à marca, altere as variáveis no começo de `assets/css/main.css` (`--green-600`, `--lime`, `--accent`…).
-
-## Atualizar a prévia depois de mudar o tema
-
-A prévia é gerada com os próprios arquivos do tema, então ela sempre fica igual ao WordPress. Precisa ter PHP e `zip` instalados:
-
-```bash
-./tools/build.sh
-```
-
-O script confere a sintaxe dos arquivos PHP, gera de novo `preview/index.html` e `dist/bambu-musica-e-arte.zip`.
+**Arquivos**
+- Logo oficial (vetor) e `assets/img/logo.png` para o JSON-LD.
+- Fotos listadas em `assets/fotos/LEIA-ME.md` e a imagem de compartilhamento `og-fachada.jpg`.

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /partes/
+Disallow: /ferramentas/
+
+Sitemap: https://bambumusicaearte.com.br/sitemap.xml

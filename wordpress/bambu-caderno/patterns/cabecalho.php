@@ -4,7 +4,7 @@
  * Slug: bambu/cabecalho
  * Categories: header
  * Block Types: core/template-part/header
- * Description: Logo, menu principal (vira "Menu" em tela cheia no celular e no tablet) e botão do WhatsApp.
+ * Description: Logo, menu principal (vira "Menu" em tela cheia no celular e no tablet) e botão do WhatsApp. O item "Falar no WhatsApp" do menu só aparece com o menu aberto. Sem logo escolhido, o editor mostra um quadro vazio e o site mostra o logo provisório.
  * Viewport Width: 1400
  */
 ?>
@@ -18,6 +18,7 @@
 <!-- wp:navigation-link {"label":"Depoimentos","url":"<?php echo esc_url( home_url( '/#depoimentos' ) ); ?>","kind":"custom","isTopLevelLink":true} /-->
 <!-- wp:navigation-link {"label":"Blog","url":"<?php echo esc_url( bambu_url_blog() ); ?>","kind":"custom","isTopLevelLink":true} /-->
 <!-- wp:navigation-link {"label":"Contato","url":"<?php echo esc_url( home_url( '/#contato' ) ); ?>","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-link {"label":"Falar no WhatsApp","url":"<?php echo esc_url( bambu_wa() ); ?>","kind":"custom","isTopLevelLink":true,"className":"nav-wa"} /-->
 <!-- /wp:navigation -->
 
 <!-- wp:buttons {"className":"cabecalho__wa"} -->

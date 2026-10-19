@@ -435,7 +435,7 @@ a { color: inherit; }
 }
 .nav-principal .wp-block-navigation-item__content:hover { text-decoration: underline; text-underline-offset: 0.3em; }
 .nav-principal .current-menu-item > .wp-block-navigation-item__content,
-.nav-principal [aria-current="page"] {
+.nav-principal [aria-current] {
   text-decoration: underline;
   text-decoration-color: var(--magenta);
   text-decoration-thickness: 2px;
@@ -495,6 +495,20 @@ a { color: inherit; }
 }
 @media (min-width: 1024px) {
   .nav-principal .wp-block-navigation__responsive-container-open:not(.always-shown) { display: none; }
+}
+/* "Falar no WhatsApp" dentro do menu: só aparece com o menu aberto, como botão */
+.nav-principal .nav-wa { display: none !important; }
+.nav-principal .is-menu-open .nav-wa { display: block !important; margin-top: 28px; }
+.nav-principal .is-menu-open .nav-wa .wp-block-navigation-item__content {
+  display: inline-flex;
+  padding: 12px 22px !important;
+  border: 1px solid var(--noite);
+  border-radius: var(--raio);
+  background: var(--azul);
+  font-family: var(--fonte-texto);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.2;
 }
 
 /* ----- hero ---------------------------------------------------------------- */
@@ -586,6 +600,7 @@ a { color: inherit; }
 }
 @media (min-width: 900px) {
   .faixa-fatos .wp-block-list { display: flex; flex-wrap: wrap; gap: 0; padding: 20px 0; font-size: 1.0625rem; }
+  .faixa-fatos .wp-block-list > li { display: flex; align-items: baseline; }
   .faixa-fatos .wp-block-list > li + li::before { content: "·"; margin-inline: 0.75em; }
 }
 
@@ -688,7 +703,7 @@ a { color: inherit; }
     gap: 6px 32px;
     padding: 30px 18px 32px;
   }
-  .curso__num { grid-row: 1 / span 2; font-size: 4.25rem; }
+  .curso__num { grid-row: 1; font-size: 4.25rem; }
   .curso h4 { grid-column: 2; grid-row: 1; font-size: 1.875rem; }
   .curso__desc { grid-column: 2; grid-row: 2; }
   .curso .etiquetas { grid-column: 3; grid-row: 1 / span 2; margin-top: 6px; }
@@ -1006,6 +1021,7 @@ a { color: inherit; }
 }
 .rodape :focus-visible { outline-color: var(--papel); }
 .rodape .logo-bambu { color: var(--papel); }
+.rodape .wp-block-site-logo { line-height: 1.6; }
 .rodape .wp-block-site-logo img { padding: 8px 10px; background: var(--papel); border-radius: var(--raio); max-height: 72px; width: auto; }
 .rodape__grade { display: grid; gap: 40px; }
 .rodape__frase {
@@ -1062,6 +1078,7 @@ a { color: inherit; }
 }
 .wa-flutuante .wp-block-button__link {
   min-height: 0;
+  line-height: 1.6;
   gap: 8px;
   padding: 10px 14px 10px 11px;
   border-color: var(--papel);
@@ -1101,6 +1118,8 @@ a { color: inherit; }
           mask: var(--mask-pauta) repeat-x left center / 8px 41px;
 }
 .cabeca-pagina h1 { font-size: var(--titulo-hero); line-height: 1.0; letter-spacing: -0.025em; max-width: 14ch; }
+/* quando o título é a última coisa do topo, as pernas do g/p/q não encostam na pauta */
+.cabeca-pagina .envelope > h1:last-child { padding-bottom: 0.25em; }
 .cabeca-pagina__intro { margin-top: 24px; max-width: 46ch; font-size: 1.1875rem; }
 .cabeca-pagina__grade { display: grid; gap: 40px; }
 .cabeca-pagina__grade > .wp-block-image { max-width: 460px; }

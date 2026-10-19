@@ -23,8 +23,8 @@
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"layout":{"type":"default"}} -->
-<div class="wp-block-group"><!-- wp:heading -->
+<!-- wp:group {"tagName":"nav","className":"rodape__nav","layout":{"type":"default"}} -->
+<nav class="wp-block-group rodape__nav"><!-- wp:heading -->
 <h2 class="wp-block-heading">Navegue</h2>
 <!-- /wp:heading -->
 
@@ -52,7 +52,7 @@
 <!-- wp:list-item -->
 <li><a href="<?php echo esc_url( bambu_url_pagina( 'trabalhe-conosco' ) ); ?>">Trabalhe conosco</a></li>
 <!-- /wp:list-item --></ul>
-<!-- /wp:list --></div>
+<!-- /wp:list --></nav>
 <!-- /wp:group -->
 
 <!-- wp:group {"layout":{"type":"default"}} -->

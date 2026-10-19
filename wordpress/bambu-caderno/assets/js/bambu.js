@@ -52,6 +52,15 @@
     }
   });
 
+  // num post, numa categoria ou numa busca, o "Blog" do menu fica marcado (sem ser a página em si)
+  if (dados.blog && document.body.matches(".single-post, .archive, .search")) {
+    var blog = new URL(dados.blog, location.href).pathname.replace(/\/?$/, "/");
+    document.querySelectorAll(".nav-principal a.wp-block-navigation-item__content").forEach(function (link) {
+      var url = new URL(link.href, location.href);
+      if (!url.hash && url.pathname.replace(/\/?$/, "/") === blog) link.setAttribute("aria-current", "true");
+    });
+  }
+
   /* ----- confirmação depois de enviar sem JS: leva o foco até ela ------------ */
 
   var confirmada = document.querySelector(".confirmacao[tabindex]");

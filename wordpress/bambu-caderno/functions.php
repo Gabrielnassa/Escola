@@ -79,6 +79,7 @@ add_action(
 			array(
 				'whatsapp'        => BAMBU_WHATSAPP,
 				'whatsappVisivel' => '(11) 94079-3838',
+				'blog'            => bambu_url_blog(),
 			)
 		);
 	}
@@ -169,3 +170,53 @@ function bambu_url_blog() {
 	$id = (int) get_option( 'page_for_posts' );
 	return $id ? get_permalink( $id ) : home_url( '/blog/' );
 }
+
+/*
+ * Páginas montadas com os padrões "Bambu: páginas" já trazem o próprio título (h1) e as seções
+ * de largura total. Se a página não tiver um modelo escolhido à mão, ela usa "Página livre"
+ * em vez do modelo comum, que acrescentaria um segundo título.
+ */
+add_filter(
+	'page_template_hierarchy',
+	function ( $modelos ) {
+		$pagina = get_queried_object();
+		if ( $pagina instanceof WP_Post && ! get_page_template_slug( $pagina ) && false !== strpos( $pagina->post_content, 'cabeca-pagina' ) ) {
+			array_unshift( $modelos, 'pagina-livre.php' );
+		}
+		return $modelos;
+	}
+);
+
+/* A busca do site procura nos posts do blog (a lista de resultados é a do blog). */
+add_action(
+	'pre_get_posts',
+	function ( $consulta ) {
+		if ( ! is_admin() && $consulta->is_main_query() && $consulta->is_search() ) {
+			$consulta->set( 'post_type', 'post' );
+		}
+	}
+);
+
+/* Nomes para as áreas de navegação, para quem usa leitor de tela. */
+add_filter(
+	'render_block',
+	function ( $html, $bloco ) {
+		$classe = isset( $bloco['attrs']['className'] ) ? $bloco['attrs']['className'] : '';
+		$nome   = '';
+		if ( 'core/navigation' === $bloco['blockName'] && false !== strpos( $classe, 'nav-principal' ) ) {
+			$nome = 'Principal';
+		} elseif ( 'core/group' === $bloco['blockName'] && false !== strpos( $classe, 'rodape__nav' ) ) {
+			$nome = 'Rodapé';
+		}
+		if ( $nome && class_exists( 'WP_HTML_Tag_Processor' ) ) {
+			$tags = new WP_HTML_Tag_Processor( $html );
+			if ( $tags->next_tag( 'nav' ) ) {
+				$tags->set_attribute( 'aria-label', $nome );
+				$html = $tags->get_updated_html();
+			}
+		}
+		return $html;
+	},
+	10,
+	2
+);

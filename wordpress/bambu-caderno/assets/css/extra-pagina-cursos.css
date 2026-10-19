@@ -1,0 +1,14 @@
+/* ==========================================================================
+   Ajustes da página Cursos (padrão bambu/pagina-cursos).
+   Carregado depois do bambu.css.
+   ========================================================================== */
+
+/* Número grande de cada curso ("01", "02"…): no site estático ele é um texto
+   em linha e a linha de texto em volta deixa uns 4–5px a mais embaixo dele.
+   No WordPress ele é um parágrafo, então o espaço até o título do curso volta
+   aqui (como padding, porque a margem se juntaria com a do título)
+   para o número não ficar colado no nome. */
+.curso-detalhe .curso__num { padding-bottom: 4px; }
+@media (min-width: 768px) {
+  .curso-detalhe .curso__num { padding-bottom: 5px; }
+}

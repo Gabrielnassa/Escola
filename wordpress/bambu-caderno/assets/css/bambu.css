@@ -1176,7 +1176,7 @@ a { color: inherit; }
   line-height: 1.1;
   max-width: 20ch;
 }
-.chamada-final__envelope { padding-bottom: var(--secao); }
+.chamada-final__envelope { padding-bottom: 0; }
 
 /* cursos (página) */
 .indice-cursos.wp-block-list { display: grid; gap: 2px 32px; margin-top: 40px; padding: 0; list-style: none; }

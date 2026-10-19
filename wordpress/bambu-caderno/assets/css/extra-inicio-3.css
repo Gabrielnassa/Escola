@@ -1,0 +1,43 @@
+/* ==========================================================================
+   Ajustes da seção "Do blog" da página inicial (padrão bambu/do-blog),
+   para ficar igual ao site estático.
+   ========================================================================== */
+
+/* Fotos dos posts com a moldura branca um pouco mais fina, como no estático. */
+.blog-home .wp-block-post-featured-image.foto-post { padding: 7px; }
+
+/* Celular e tablet: o primeiro post fica grande e os outros dois viram uma
+   lista com a foto pequena ao lado do título (112px no celular, 150px a partir
+   de 768px), separados por uma linha. */
+@media (max-width: 1023px) {
+  .blog-home .wp-block-post-template { row-gap: 24px; }
+  .blog-home .wp-block-post:nth-child(2) { margin-top: 8px; }
+  .blog-home .wp-block-post:nth-child(n+2) {
+    grid-template-columns: 112px minmax(0, 1fr);
+    column-gap: 16px;
+    align-items: start;
+  }
+  .blog-home .wp-block-post:nth-child(n+2) .wp-block-post-featured-image { grid-row: 1 / span 2; margin: 0; }
+  .blog-home .wp-block-post:nth-child(2) .wp-block-post-featured-image { transform: rotate(1.2deg); }
+  .blog-home .wp-block-post:nth-child(3) .wp-block-post-featured-image { transform: rotate(-1deg); }
+  .blog-home .wp-block-post:nth-child(n+2) .wp-block-post-title { font-size: 1.1875rem; }
+  .blog-home .wp-block-post:nth-child(3) { padding-top: 24px; border-top: 1px solid var(--linha); }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .blog-home .wp-block-post-template { row-gap: 28px; }
+  .blog-home .wp-block-post:nth-child(2) { margin-top: 4px; }
+  .blog-home .wp-block-post:nth-child(n+2) { grid-template-columns: 150px minmax(0, 1fr); column-gap: 20px; }
+  .blog-home .wp-block-post:nth-child(n+2) .wp-block-post-title { font-size: 1.375rem; }
+  .blog-home .wp-block-post:nth-child(3) { padding-top: 28px; }
+}
+
+/* Post sem imagem destacada: data e título ocupam a largura toda, em vez de
+   a data cair na coluna estreita reservada para a foto. */
+.blog-home .wp-block-post:nth-child(n+2):not(:has(.wp-block-post-featured-image)) { grid-template-columns: minmax(0, 1fr); }
+
+/* ==========================================================================
+   Formulário de contato: depois do envio, o JS esconde o formulário com o
+   atributo "hidden" e mostra a confirmação no lugar. O "display: grid" de
+   .formulario vencia o "hidden" e os dois apareciam juntos.
+   ========================================================================== */
+.formulario[hidden] { display: none; }

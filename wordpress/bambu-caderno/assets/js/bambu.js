@@ -40,6 +40,18 @@
     }
   }
 
+  /* ----- menu: marca a página atual (os links do padrão são personalizados) ---- */
+
+  var aqui = location.origin + location.pathname.replace(/\/?$/, "/");
+  document.querySelectorAll(".nav-principal a.wp-block-navigation-item__content").forEach(function (link) {
+    var url = new URL(link.href, location.href);
+    if (url.hash) return; // âncoras da página inicial (#contato, #depoimentos) não são "página atual"
+    var destino = url.origin + url.pathname.replace(/\/?$/, "/");
+    if (destino === aqui && !link.hasAttribute("aria-current")) {
+      link.setAttribute("aria-current", "page");
+    }
+  });
+
   /* ----- confirmação depois de enviar sem JS: leva o foco até ela ------------ */
 
   var confirmada = document.querySelector(".confirmacao[tabindex]");
@@ -206,7 +218,7 @@
       botao.disabled = true;
       botao.textContent = "Enviando…";
 
-      fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json", "X-Bambu-Ajax": "1" }, credentials: "same-origin" })
+      fetch(form.getAttribute("action"), { method: "POST", body: new FormData(form), headers: { Accept: "application/json", "X-Bambu-Ajax": "1" }, credentials: "same-origin" })
         .then(function (r) { return r.json().catch(function () { return {}; }); })
         .then(function (resposta) {
           if (resposta && resposta.success) { mostrarConfirmacao(form); return; }

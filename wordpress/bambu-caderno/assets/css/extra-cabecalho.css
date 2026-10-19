@@ -1,0 +1,43 @@
+/* ==========================================================================
+   Bambu Caderno: ajustes da barra superior, do cabeçalho e do rodapé.
+   Carregado depois do bambu.css. Cada regra aqui corrige um ponto em que o
+   CSS do próprio WordPress tem prioridade maior que a do bambu.css.
+   ========================================================================== */
+
+/* Barra superior: abaixo de 480px fica só o número, como no site estático.
+   A palavra "WhatsApp" do link está em negrito (<strong>) no bloco Parágrafo. */
+@media (max-width: 479px) {
+  .barra-topo a strong { display: none; }
+}
+/* o número não quebra no meio em telas bem estreitas (320px) */
+.barra-topo a { white-space: nowrap; }
+
+/* Logo provisório: o WordPress põe "display: inline-block; line-height: 0" no
+   link do bloco Logo do site, o que empilhava o cata-vento em cima do nome. */
+.wp-block-site-logo a.logo-bambu {
+  display: inline-flex;
+  line-height: normal;
+}
+
+/* Botão "Falar no WhatsApp" do cabeçalho: escondido no celular (abaixo de 640px).
+   O layout flex do WordPress ("body .is-layout-flex") ganhava do bambu.css. */
+.cabecalho .cabecalho__wa { display: none; }
+@media (min-width: 640px) {
+  .cabecalho .cabecalho__wa { display: flex; }
+}
+
+/* Botões "Menu" e "Fechar": o WordPress repete a classe três vezes para herdar a
+   fonte do menu; aqui volta a etiqueta em negrito do site estático. */
+.nav-principal .wp-block-navigation__responsive-container-open.wp-block-navigation__responsive-container-open.wp-block-navigation__responsive-container-open,
+.nav-principal .wp-block-navigation__responsive-container-close.wp-block-navigation__responsive-container-close.wp-block-navigation__responsive-container-close {
+  align-items: center;
+  justify-content: center;
+  font: 700 0.9375rem/1 var(--fonte-texto);
+}
+
+/* Menu aberto (tela cheia): "Fechar" fica à direita, como no site estático,
+   em vez de esticar na largura toda. */
+.nav-principal .is-menu-open .wp-block-navigation__responsive-container-close {
+  display: flex;
+  align-self: flex-end;
+}

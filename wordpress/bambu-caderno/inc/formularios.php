@@ -426,3 +426,15 @@ function bambu_receber_trabalhe() {
 }
 add_action( 'admin_post_nopriv_bambu_trabalhe', 'bambu_receber_trabalhe' );
 add_action( 'admin_post_bambu_trabalhe', 'bambu_receber_trabalhe' );
+
+/*
+ * O WordPress roda os shortcodes do template antes de expandir os padrões (wp:pattern),
+ * então um bloco Shortcode vindo de padrão chegaria cru na página. Aqui ele é processado
+ * na hora em que o bloco é renderizado.
+ */
+add_filter(
+	'render_block_core/shortcode',
+	function ( $conteudo ) {
+		return do_shortcode( $conteudo );
+	}
+);

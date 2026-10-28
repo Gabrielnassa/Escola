@@ -1,0 +1,16 @@
+/*
+Theme Name: Bambu Caderno
+Theme URI: https://bambumusicaearte.com.br/
+Author: Bambu Escola de Música e Arte
+Description: Tema de blocos da Bambu Escola de Música e Arte, no Ipiranga. Direção "caderno de pauta": papel de partitura, cores do logo, Fraunces e Nunito Sans. Tudo editável pelo editor do site (Aparência → Editor).
+Requires at least: 6.6
+Tested up to: 6.8
+Requires PHP: 7.4
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: bambu-caderno
+Tags: block-patterns, full-site-editing, editor-style, custom-colors, custom-logo, education
+*/
+
+/* Os estilos ficam em assets/css/bambu.css. Cores e fontes: Aparência → Editor → Estilos. */

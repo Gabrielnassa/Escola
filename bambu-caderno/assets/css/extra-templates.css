@@ -1,0 +1,48 @@
+/* ==========================================================================
+   Bambu Caderno: ajustes dos templates (blog, post, busca, arquivo, página, 404).
+   Complementa o bambu.css onde a marcação dos blocos dinâmicos difere do site estático.
+   ========================================================================== */
+
+/* Post: "data · autor", como no estático */
+.artigo .post-meta { column-gap: 0.45em; }
+.artigo .post-meta > .wp-block-post-author-name::before {
+  content: "·";
+  margin-right: 0.45em;
+}
+
+/* Texto do post e da página comum: espaço entre os blocos e listas com recuo */
+.pagina-conteudo > .wp-block-post-content > * + * { margin-top: 1em; }
+.pagina-conteudo > .wp-block-post-content > h2 { margin-top: 1.6em; }
+.pagina-conteudo > .wp-block-post-content > h3 { margin-top: 1.4em; }
+.artigo .wp-block-post-content > :is(ul, ol):not([class*="is-style-"]):not(.etiquetas),
+.pagina-conteudo .wp-block-post-content > :is(ul, ol):not([class*="is-style-"]):not(.etiquetas) {
+  padding-left: 1.3em;
+}
+.artigo .wp-block-post-content li + li,
+.pagina-conteudo .wp-block-post-content li + li { margin-top: 0.35em; }
+
+/* Busca: o campo fica embaixo do título, com largura de leitura */
+.cabeca-pagina .wp-block-search { margin-top: 28px; max-width: 560px; }
+.wp-block-search__label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+.wp-block-search__input { background: var(--branco); color: var(--noite); }
+.wp-block-search__input:focus-visible { outline: 2px solid var(--noite); outline-offset: 1px; border-color: var(--noite); }
+
+/* Paginação da lista de posts */
+.wp-block-query-pagination { flex-wrap: wrap; align-items: center; }
+.wp-block-query-pagination a { text-decoration-thickness: 1.5px; text-underline-offset: 0.22em; }
+.wp-block-query-pagination-numbers { display: flex; flex-wrap: wrap; gap: 2px; }
+.wp-block-query-pagination .page-numbers { display: inline-block; min-width: 2em; padding: 6px 4px; text-align: center; }
+.wp-block-query-pagination .page-numbers.current {
+  text-decoration: underline;
+  text-decoration-color: var(--magenta);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+/* 404: o link ao lado do botão não herda a margem dos parágrafos */
+.nao-achou .hero__acoes p { margin-top: 0; }

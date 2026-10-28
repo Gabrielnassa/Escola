@@ -1,0 +1,23 @@
+/* ==========================================================================
+   Ajustes da seção "Na escola ou na sua casa" (padrão bambu/escola-ou-casa),
+   para as medidas ficarem iguais às do site estático.
+   ========================================================================== */
+
+/* O rodapé de cada formato (endereço, região atendida) fica a 14px da lista,
+   como no estático. */
+.formato > .formato__rodape { margin-top: 14px !important; }
+
+/* Celular e tablet: 40px de respiro + pentagrama deitado (41px) + 40px
+   entre os dois formatos. */
+@media (max-width: 899px) {
+  .formatos__grade { gap: 121px; }
+  .formato + .formato::before { margin-top: -81px; }
+}
+
+/* Computador: 56px + pentagrama em pé (41px) + 56px entre as duas colunas.
+   O pentagrama é centralizado com "left" em vez de "translate", para as cinco
+   linhas caírem em pixels inteiros (com translate a última quase some). */
+@media (min-width: 900px) {
+  .formatos__grade { column-gap: 153px; }
+  .formato + .formato::before { left: calc(50% - 20.5px); translate: none; }
+}

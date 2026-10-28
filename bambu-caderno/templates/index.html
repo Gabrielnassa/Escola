@@ -1,0 +1,59 @@
+<!-- wp:template-part {"slug":"barra-topo","tagName":"aside"} /-->
+
+<!-- wp:template-part {"slug":"header","tagName":"header","className":"cabecalho-fixo"} /-->
+
+<!-- wp:group {"tagName":"main","layout":{"type":"default"}} -->
+<main class="wp-block-group"><!-- wp:group {"tagName":"header","align":"full","className":"cabeca-pagina","layout":{"type":"default"}} -->
+<header class="wp-block-group alignfull cabeca-pagina"><!-- wp:group {"className":"envelope","layout":{"type":"default"}} -->
+<div class="wp-block-group envelope"><!-- wp:paragraph {"className":"is-style-sobretitulo"} -->
+<p class="is-style-sobretitulo">Blog</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">Conversas sobre música e aprendizado</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"cabeca-pagina__intro"} -->
+<p class="cabeca-pagina__intro">Textos da escola para quem estuda, para quem tem filho estudando e para quem ensina.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></header>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"section","align":"full","className":"secao secao--colada","layout":{"type":"default"}} -->
+<section class="wp-block-group alignfull secao secao--colada"><!-- wp:group {"className":"envelope","layout":{"type":"default"}} -->
+<div class="wp-block-group envelope"><!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true}} -->
+<div class="wp-block-query"><!-- wp:group {"className":"lista-posts","layout":{"type":"default"}} -->
+<div class="wp-block-group lista-posts"><!-- wp:post-template -->
+<!-- wp:group {"className":"lista-posts__linha","layout":{"type":"default"}} -->
+<div class="wp-block-group lista-posts__linha"><!-- wp:group {"className":"lista-posts__texto","layout":{"type":"default"}} -->
+<div class="wp-block-group lista-posts__texto"><!-- wp:post-date {"className":"post-meta"} /-->
+
+<!-- wp:post-title {"isLink":true} /-->
+
+<!-- wp:post-excerpt {"excerptLength":30} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:post-featured-image {"aspectRatio":"3/2","className":"foto-post"} /--></div>
+<!-- /wp:group -->
+<!-- /wp:post-template --></div>
+<!-- /wp:group -->
+
+<!-- wp:query-pagination {"paginationArrow":"arrow"} -->
+<!-- wp:query-pagination-previous {"label":"Posts mais recentes"} /-->
+
+<!-- wp:query-pagination-numbers /-->
+
+<!-- wp:query-pagination-next {"label":"Posts anteriores"} /-->
+<!-- /wp:query-pagination -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph {"className":"sem-posts"} -->
+<p class="sem-posts">Os primeiros posts aparecem aqui assim que forem publicados.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group --></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
